@@ -127,77 +127,84 @@ public class MainActivity extends AppCompatActivity {
     public void checkWinner(ArrayList selectedButtonP1, ArrayList selectedButtonP2){
 
         //GANA JUGADOR 1
-        if (selectedButtonP1.contains(1) && selectedButtonP1.contains(2) && selectedButtonP1.contains(3)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(4) && selectedButtonP1.contains(5) && selectedButtonP1.contains(6)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(7) && selectedButtonP1.contains(8) && selectedButtonP1.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(1) && selectedButtonP1.contains(4) && selectedButtonP1.contains(7)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(2) && selectedButtonP1.contains(5) && selectedButtonP1.contains(8)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(3) && selectedButtonP1.contains(6) && selectedButtonP1.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(1) && selectedButtonP1.contains(5) && selectedButtonP1.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP1.contains(3) && selectedButtonP1.contains(5) && selectedButtonP1.contains(7)){
+        if (ganaUno(selectedButtonP1,selectedButtonP2)==true){
             Toast.makeText(this, "GANA JUGADOR 1",Toast.LENGTH_SHORT).show();
             endGame();
         }
 
         //GANA JUGADOR 2
-        if (selectedButtonP2.contains(1) && selectedButtonP2.contains(2) && selectedButtonP2.contains(3)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(4) && selectedButtonP2.contains(5) && selectedButtonP2.contains(6)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(7) && selectedButtonP2.contains(8) && selectedButtonP2.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(1) && selectedButtonP2.contains(4) && selectedButtonP2.contains(7)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(2) && selectedButtonP2.contains(5) && selectedButtonP2.contains(8)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(3) && selectedButtonP2.contains(6) && selectedButtonP2.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(1) && selectedButtonP2.contains(5) && selectedButtonP2.contains(9)){
-            Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
-            endGame();
-        }
-        else if (selectedButtonP2.contains(3) && selectedButtonP2.contains(5) && selectedButtonP2.contains(7)){
+        else if (ganaDos(selectedButtonP1,selectedButtonP2)==true){
             Toast.makeText(this, "GANA JUGADOR 2",Toast.LENGTH_SHORT).show();
             endGame();
         }
 
         //EMPATE
-        if ((selectedButtonP2.size()==4 && selectedButtonP1.size()==5) || (selectedButtonP2.size()==5 && selectedButtonP1.size()==4)) {
+        else if (selectedButtonP2.size()==4 && selectedButtonP1.size()==5 && !ganaUno(selectedButtonP1,selectedButtonP2) && !ganaDos(selectedButtonP1,selectedButtonP2)
+                || (selectedButtonP2.size()==5 && selectedButtonP1.size()==4) && !ganaUno(selectedButtonP1,selectedButtonP2) && !ganaDos(selectedButtonP1,selectedButtonP2)) {
             Toast.makeText(this, "EMPATE",Toast.LENGTH_SHORT).show();
             endGame();
         }
+    }
+
+    public boolean ganaUno(ArrayList selectedButtonP1, ArrayList selectedButtonP2){
+        boolean gana=false;
+
+        if (selectedButtonP1.contains(1) && selectedButtonP1.contains(2) && selectedButtonP1.contains(3)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(4) && selectedButtonP1.contains(5) && selectedButtonP1.contains(6)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(7) && selectedButtonP1.contains(8) && selectedButtonP1.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(1) && selectedButtonP1.contains(4) && selectedButtonP1.contains(7)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(2) && selectedButtonP1.contains(5) && selectedButtonP1.contains(8)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(3) && selectedButtonP1.contains(6) && selectedButtonP1.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(1) && selectedButtonP1.contains(5) && selectedButtonP1.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP1.contains(3) && selectedButtonP1.contains(5) && selectedButtonP1.contains(7)){
+            gana=true;
+        }
+
+        return gana;
+    }
+
+    public boolean ganaDos(ArrayList selectedButtonP1, ArrayList selectedButtonP2){
+        boolean gana=false;
+
+        if (selectedButtonP2.contains(1) && selectedButtonP2.contains(2) && selectedButtonP2.contains(3)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(4) && selectedButtonP2.contains(5) && selectedButtonP2.contains(6)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(7) && selectedButtonP2.contains(8) && selectedButtonP2.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(1) && selectedButtonP2.contains(4) && selectedButtonP2.contains(7)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(2) && selectedButtonP2.contains(5) && selectedButtonP2.contains(8)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(3) && selectedButtonP2.contains(6) && selectedButtonP2.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(1) && selectedButtonP2.contains(5) && selectedButtonP2.contains(9)){
+            gana=true;
+        }
+        else if (selectedButtonP2.contains(3) && selectedButtonP2.contains(5) && selectedButtonP2.contains(7)){
+            gana=true;
+        }
+
+        return gana;
     }
 }
